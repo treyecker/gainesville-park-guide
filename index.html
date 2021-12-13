@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang=en>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title> A Gainesville Park Guide </title>
+    <link href="https://fonts.googleapis.com/css2?family=Karla&family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="">
+    <link rel="stylesheet" href="css/main.css">
+  </head>
+
+  <body>
+
+    <header>
+
+      <h1>Gainesville Parks</h1>
+
+      <nav>
+        <ul>
+          <li><a href="#alfred" id="open-alfred">Alfred</a></li>
+          <li><a href="#depot" id="open-depot">Depot</a></li>
+          <li><a href="#loblolly" id="open-loblolly">Loblolly</a></li>
+          <li><a href="#paynes" id="open-paynes">Paynes</a></li>
+        </ul>
+      </nav>
+
+    </header>
+
+    <article>
+
+      <div class="map" id="map"></div>
+
+      <div id="total-quiz">
+
+        <a href="#quiz-content">
+          <button class="clicker" id="quiz-clicker">Find the park best for you!</button>
+        </a>
+
+        <div id=quiz-content>
+
+          <div id="quiz">
+            <form id=form1>
+              <h2> Discover which park is best for you! </h2>
+              <p>Would you rather see small animals (birds, otters, snakes, etc.) or large animals (bison, deer, horses, etc.)?</p>
+                <label><input type="radio" name="animal-preferences" id="small" value="1">Small animals</label>
+                <label><input type="radio" name="animal-preferences" id="large" value="100">Large animals</label>
+              <p>Do you plan to bring children under 12 years old?</p>
+                <label><input type="radio" name="kid-preferences" id="kids" value="3">Yes</label>
+                <label><input type="radio" name="kid-preferences" id="no-kids" value="4">No</label>
+              <p>Is a playground an important feature for you?</p>
+                <label><input type="radio" name="playground-preferences" id="playground" value="5">Yes</label>
+                <label><input type="radio" name="playground-preferences" id="no-playground" value="6">No</label>
+              <p>Would you rather have more amenities or more trails?</p>
+                <label><input type="radio" name="amenities-preferences" id="amenities" value="7">Amenities</label>
+                <label><input type="radio" name="amenities-preferences" id="trails" value="8">Trails</label>
+              <p>Do you prefer paved or dirt paths? </p>
+                <label><input type="radio" name="path-preferences" id="paved" value="-20">Paved paths</label>
+                <label><input type="radio" name="path-preferences" id="dirt" value="10">Dirt paths</label>
+              <p>Do you prefer short (less than 2 miles) or long trails (greater than 2 miles)?</p>
+                <label><input type="radio" name="length-preferences" id="short-trails" value="11">Short trails</label>
+                <label><input type="radio" name="length-preferences" id="long-trails" value="20">Long trails</label>
+              <p>Do you prefer trails near creeks?</p>
+                <label><input type="radio" name="creek-preferences" id="creeks" value="13">Yes</label>
+                <label><input type="radio" name="creek-preferences" id="no-creeks" value="14">No</label>
+              <br>
+              <a href="#answer">
+                <button type="submit" value="Submit">Submit</button>
+              </a>
+            </form>
+            <a href="#buttons">
+              <button class="clicker" id="quiz-close"> Hide the quiz! </button>
+            </a>
+          </div>
+
+          <div id="quiz-results">
+            <h2 id="answer"></h2>
+          </div>
+
+        </div>
+
+      </div>
+
+      <h1> Explore the Parks </h1>
+
+      <div id="buttons">
+        <a href="#alfred">
+          <button class="clicker" id="alfred-clicker">Alfred A. Ring Park</button>
+        </a>
+
+        <a href="#depot">
+          <button class="clicker" id="depot-clicker">Depot Park</button>
+        </a>
+
+        <a href="#loblolly">
+          <button class="clicker" id="loblolly-clicker">Loblolly Nature Woods Park</button>
+         </a>
+
+         <a href="#paynes">
+          <button class="clicker" id="paynes-clicker"> Paynes Prairie</button>
+        </a>
+      </div>
+
+      <div id="park-content">
+
+        <section id="alfred">
+          <section class="information" id="alfred-info">
+
+            <div class="photo" id="alfred-park-photo">
+              <img src="images/alfred/alfred-trail-head.jpg" alt="Alfred A. Ring Park">
+            </div>
+
+            <div class="text" id="alfred-text">
+              <h2> Alfred A. Ring Park </h2>
+              <p> Alfred A. Ring park is open from 7 a.m. to 6 p.m. from Nov. to April and 7 a.m. to 8 p.m. from May to Oct. The park is free to guests and features 1.5 miles of trail that park goers can explore. A great park to bring children too, Alfred A. Ring park features a playground and easy paths to walk, perfectly suited for guests under 12 years old. Guests can walk along Hogtown Creek and while the river is frequently waded in, it is against park rules. Wading can also be dangerous as Hogtown Creek is frequently polluted by neighborhood runoff water. For guests who enjoy flowers, the park has a flower garden and Koi pond that guests can explore and learn about the flora and fauna. For more information, please visit <a href="https://floridahikes.com/ringpark">Florida Hikes.</a></p>
+              <p> Photo taken by Trey Ecker. Click on the images below to learn more.</p>
+
+            </div>
+
+          </section>
+
+          <div class="animal-photos" id="alfred-animal-photos">
+
+            <a href="#alfred-animal1">
+            <img class="animal-clicker" id="alfred-photo1" src="images/alfred/alfred-blue-jay.jpg" alt="Blue Jay Photo">
+            </a>
+
+            <a href="#alfred-animal2">
+            <img class="animal-clicker" id="alfred-photo2" src="images/alfred/alfred-honeysuckle.jpg" alt="Coral Honeysuckle Flower">
+            </a>
+
+            <a href="#alfred-animal3">
+            <img class="animal-clicker" id="alfred-photo3" src="images/alfred/alfred-snake.jpg" alt="Banded water snake">
+            </a>
+
+            <a href="#alfred-animal4">
+            <img class="animal-clicker" id="alfred-photo4" src="images/alfred/alfred-magnolia.jpg" alt="southern magnolia flower">
+            </a>
+
+          </div>
+
+            <section class="animal-info" id="alfred-animal1">
+
+              <div class="photo" id="alfred-animal1-photo">
+                <img src="images/alfred/alfred-blue-jay.jpg" alt="Blue Jay photo">
+              </div>
+
+              <div class="text" id="alfred-animal1-text">
+                <h2> Blue Jay </h2>
+                <p> Blue Jays (Cyanocitta cristata), present in almost all midwestern and eastern states of America, are easily recognizable due to their vibrant color and distinct call. A majority of their diet consists of insects and nuts, however, some have been found with remnants of eggs in their stomachs. Blue Jay’s are known to frequently mimic the sound of Red-shouldered hawks, potentially to signal to other Jay’s that hawks are in the area. To learn more about Blue Jays, please visit <a href="https://www.allaboutbirds.org/guide/Blue_Jay/overview#">All About Birds.</a></p>
+                <p> Photo sourced from <a href ="https://www.flickr.com/photos/rick_leche/2390153534">Rick Leche</a> via Flicker.com</p>
+                <button id="alfred-button1"> Close </button>
+              </div>
+            </section>
+
+            <section class="animal-info" id="alfred-animal2">
+
+              <div class="photo" id="alfred-animal2-photo">
+                <img src="images/alfred/alfred-honeysuckle.jpg" alt="Coral Honeysuckle Flower">
+              </div>
+
+              <div class="text" id="alfred-animal2-text">
+                <h2> Coral Honeysuckle </h2>
+                <p> Native to East Texas, the Coral Honeysuckle (Lonicera sempervirens) can be seen in most states and is naturally distributed along the eastern states from South Maine to Florida. The perennial flower has a sweet taste when sucked on, and the leaves can be ground up and applied to bee stings. The flowers also attract hummingbirds and bees to help pollinate the woods around. For more information, please visit <a href="https://www.wildflower.org/plants/result.php?id_plant=lose">the Wildflower Center.</a></p>
+                <p>Photo sourced from <a href ="https://www.flickr.com/photos/38514062@N03/32912877750">Mia Keim</a> via Flicker.com</p>
+                <button id="alfred-button2"> close </button>
+              </div>
+            </section>
+
+            <section class="animal-info" id="alfred-animal3">
+
+              <div class="photo" id="alfred-animal3-photo">
+                <img src="images/alfred/alfred-snake.jpg" alt="broad-headed skink photo">
+              </div>
+
+              <div class="text" id="alfred-animal3-text">
+                <h2> Banded Watersnake </h2>
+                <p> Identifiable by their broad brown, black or red cross bands, the Banded Watersnake (​​Nerodia fasciata) is a nonvenomous snake that can be found everywhere in Florida, except for the Keys. These snakes are generally non-aggressive and avoid contact with people, but will bite when provoked.Sometimes confused for the venomous Cottonmouth, the Banded Watersnake can be differentiated by their rounder eyes compared to the Cottonmouth’s cat-like eyes. For more information, please visit <a href="https://www.floridamuseum.ufl.edu/florida-snake-id/snake/southern-watersnake/">the Florida Museum.</a></p>
+                <p><a href="https://commons.wikimedia.org/wiki/File:Banded_water_snake.jpg">Photo</a> sourced from Sandhillcrane, <a href ="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0,</a> via Wikimedia Commons.</p>
+                <button id="alfred-button3"> close </button>
+              </div>
+            </section>
+
+            <section class="animal-info" id="alfred-animal4">
+
+              <div class="photo" id="alfred-animal4-photo">
+                <img src="images/alfred/alfred-magnolia.jpg" alt="southern magnolia flower">
+              </div>
+
+              <div class="text" id="alfred-animal4-text">
+                <h2> Southern Magnolia </h2>
+                <p> Native to lowlands and coastal plains, the Southern Magnolia (Magnolia grandiflora) can be found in the Southeast region, south of Virginia and east of Texas. The Southern Magnolia often provides a respite to harsh sun, due to the amount of shade the tree provides. Easily recognizable due to its flowers and vibrant red seeds, the Southern Magnolia can be seen within Alfred A. Ring park. For more information, please visit <a href="https://www.wildflower.org/plants/result.php?id_plant=lose">the Wildflower Center.</a></p>
+                <p><a href="https://commons.wikimedia.org/wiki/File:Magnolia_flower_Duke_campus.jpg">Photo</a> sourced from DavetheMage, <a href ="https://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> via Wikimedia Commons.</p>
+                <button id="alfred-button4"> close </button>
+              </div>
+            </section>
+
+            <h2> Discover the Trails </h2>
+
+            <div class="map" id="alfred-map"></div>
+
+            <a href="#buttons">
+              <button class="clicker" id="alfred-close"> Explore the other parks! </button>
+            </a>
+
+        </section>
+
+        <section id="depot">
+          <section class="information" id="depot-info">
+
+            <div class="photo" id="depot-park-photo">
+              <img src="images/depot/depot-park.jpg" alt="aerial view of depot park">
+            </div>
+
+            <div class="text" id="depot-text">
+              <h2> Depot Park </h2>
+              <p> Depot Park is open from 7 a.m. to 11:30 p.m. year round. As the city’s primary urban park, Depot is free to all guests and offers a host of amenities, the most accessible of which include a kid’s play area and conservation area. While less nature focused than many of Gainesville’s other parks, Depot Park still boasts a 0.8 mile walking trail, leading around the pond and through the nature preserve. A variety of water birds can be viewed in the ponds and the preserve surrounding it. Additionally, Depot Park offers many places to eat and drink, picnic spots, and a variety of events year-round. From figure drawing and fitness classes, to movies and fireworks, Depot provides something for everyone. For more information, please visit <a href="http://www.depotpark.org/information">Depot Park.</a></p>
+              <p> <a href="https://commons.wikimedia.org/wiki/File:The_Cade_Museum_at_Depot_Park.jpg">Photo</a> sourced from Flatwoods 36,<a href ="https://creativecommons.org/licenses/by-sa/4.0"> CC BY-SA 4.0</a> via Wikimedia Commons. Click on the images below to learn more.</p>
+            </div>
+
+          </section>
+
+          <div class="animal-photos" id="depot-animal-photos">
+
+            <a href="#depot-animal1">
+            <img class="animal-clicker" id="depot-photo1" src="images/depot/depot-turtle.jpg" alt="Florida Red Bellied Turtle">
+            </a>
+
+            <a href="#depot-animal2">
+            <img class="animal-clicker" id="depot-photo2" src="images/depot/depot-moorhen.jpg" alt="Moorhen">
+            </a>
+
+            <a href="#depot-animal3">
+            <img class="animal-clicker" id="depot-photo3" src="images/depot/depot-limpkin.jpg" alt="A limpkin walks in marsh">
+            </a>
+
+            <a href="#depot-animal4">
+            <img class="animal-clicker" id="depot-photo4" src="images/depot/depot-snowy-egret.jpg" alt="Snowy Egret">
+            </a>
+
+          </div>
+
+            <section class="animal-info" id="depot-animal1">
+
+              <div class="photo" id="depot-animal1-photo">
+                <img src="images/depot/depot-turtle.jpg" alt="florida red-belly turtle">
+              </div>
+
+              <div class="text" id="depot-animal1-text">
+                <h2> Florida Red Bellied Turtle </h2>
+                <p> Usually found in freshwater lakes and some brackish water, the Florida  Red-Bellied Turtle (Pseudemys nelsoni) is quickly identified thanks to its pink-red hued “belly” in juveniles, which becomes more noticeably red on their outer shells as adults. Their bodies are mostly brown and yellow with some orange and red on their shells and bellies. They can live 33 years in captivity, and primarily eat vegetation or algae, though insects make up a small portion of their diet. The Florida Red-Bellied Turtle can breed 3-6 times a year, with the season coinciding with the spring and summer months. To learn more, please visit <a href ="https://animaldiversity.org/accounts/Pseudemys_nelsoni/#lifespan_longevity"> the University of Michigan's Animal Diversity Website.</a></p>
+                <p> <a href="https://commons.wikimedia.org/wiki/File:Florida_Redbelly_Turtle.jpg">Photo</a> sourced from JamieS93, <a href ="https://creativecommons.org/licenses/by/3.0">CC BY 3.0,</a> via Wikimedia Commons.</p>
+                <button id="depot-button1"> close </button>
+              </div>
+            </section>
+
+            <section class="animal-info" id="depot-animal2">
+
+              <div class="photo" id="depot-animal2-photo">
+                <img src="images/depot/depot-moorhen.jpg" alt="Moorhen">
+              </div>
+
+              <div class="text" id="depot-animal2-text">
+                <h2> Moorhen </h2>
+                <p> The Common  Moorhen (Gallinula chloropus) is known for both its loudness and its bright red beak with a dusting of yellow at its end. Though sometimes a migratory bird, the moorhen typically stays in Florida all year round. They are omnivores who primarily eat aquatic vegetation, seeds, and small creatures, like shrimp, insects, and the like. The Common Moorhen has a roughly 3 year life span, and its reproductive season is from March to May. For more information, please visit <a href ="https://animalia.bio/common-moorhen"> Animalia.</a></p>
+                <p>Photo taken by Trey Ecker.</p>
+                <button id="depot-button2"> close </button>
+              </div>
+            </section>
+
+            <section class="animal-info" id="depot-animal3">
+
+              <div class="photo" id="depot-animal3-photo">
+                <img src="images/depot/depot-limpkin.jpg" alt="A limpkin walks in marsh">
+              </div>
+
+              <div class="text" id="depot-animal3-text">
+                <h2> Limpkin </h2>
+                <p> Speckled in appearance, the Limpkin (Aramus guarauna) is a common-looking bird with a long neck and beak. The waters of Gainesville are about the farthest north Limpkins will live and breed, and are mostly found in warm, tropical places. Its primary food source in Florida is apple snails, though they also eat things like insects and frogs. Like many FLorida birds, Limpkins are most notable for the noises they emit rather than simply their appearance. For more information, please visit <a href ="https://www.nps.gov/ever/learn/nature/limpkin.htm">the National Park Service.</a></p>
+                <p> <a href ="https://commons.wikimedia.org/wiki/File:Limpkin,_Florida_05.jpg">Photo</a> sourced from VJAnderson, <a href ="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0,</a> via Wikimedia Commons.</p>
+                <button id="depot-button3"> close </button>
+              </div>
+            </section>
+
+            <section class="animal-info" id="depot-animal4">
+
+              <div class="photo" id="depot-animal4-photo">
+                <img src="images/depot/depot-snowy-egret.jpg" alt="A Snowy Egret">
+              </div>
+
+              <div class="text" id="depot-animal4-text">
+                <h2> Snowy Egret </h2>
+                <p> The Snowy Egret (Egretta thula), is a small, white bird most known for its gorgeous plumage–for which it was hunted in the 1800s. Mostly found in coastal areas like marshes and ponds, the Snowy Egret relies on insects and aquatic animals like fish for its food, as well as rodents and lizards. Like the Moorhen, the Snowy Egret sometimes curbs its migration habits and keeps to Florida year round. They can lay roughly 3-5 eggs, and are still expanding their populations. For more information, please visit <a href="https://www.audubon.org/field-guide/bird/snowy-egret">Audobon's Field Guide.</a></p>
+                <p> Photo sourced from <a href ="https://www.flickr.com/photos/pavdw/43719315274">Paul VanDerWerf</a> via Flicker.com</p>
+                <button id="depot-button4"> close </button>
+              </div>
+            </section>
+
+            <h2> Discover the Trails </h2>
+
+            <div class="map" id="depot-map"></div>
+
+          <a href="#buttons">
+            <button class="clicker" id="depot-close"> Explore the other parks! </button>
+          </a>
+
+        </section>
+
+        <section id="loblolly">
+          <section class="information" id="loblolly-info">
+
+            <div class="photo" id="loblolly-park-photo">
+              <img src="images/loblolly/loblolly-path-with-leaf-change.jpg" alt="Loblolly nature woods park trail in the fall">
+            </div>
+
+            <div class="text" id="loblolly-text">
+              <h2> Loblolly Nature Woods Park: South Trails </h2>
+              <p> Loblolly Woods Nature Park is open from dawn-dusk everyday, year round. Offering 159 acres of land, Loblolly is free to all guests and provides a woodsy escape from the more urban side of Gainesville. With easily accessible trails, and up to 3 miles of them, Loblolly is perfect for a casual stroller, though can easily work up to an intermediate level. The paths are well-traversed enough to walk, jog, bike, through the park, and a quarter mile boardwalk provides the perfect area for anyone to enjoy. Importantly, the park also has plenty of parking and a public restroom.  Though rich with bugs, Loblolly is also infused with streams and creeks, and of course, trees–like the loblolly pines from which the park derives its name. For more information, please visit <a href="https://floridahikes.com/loblolly-woods-nature-park">Florida Hikes.</a></p>
+              <p> Photo taken by Trey Ecker. Click on the images below to learn more.</p>
+            </div>
+
+          </section>
+
+          <div class="animal-photos" id="loblolly-animal-photos">
+
+            <a href="#loblolly-animal1">
+            <img class="animal-clicker" id="loblolly-photo1" src="images/loblolly/loblolly-lichen.jpg" alt="Lichen growing on tree">
+            </a>
+
+            <a href="#loblolly-animal2">
+            <img class="animal-clicker" id="loblolly-photo2" src="images/loblolly/loblolly-spider.jpg" alt="Golden Orb Weaver Spider, A.K.A. Banana Spider">
+            </a>
+
+            <a href="#loblolly-animal3">
+            <img class="animal-clicker" id="loblolly-photo3" src="images/loblolly/loblolly-maple.jpg" alt="A Florida Maple">
+            </a>
+
+            <a href="#loblolly-animal4">
+            <img class="animal-clicker" id="loblolly-photo4" src="images/loblolly/loblolly-bunting.jpg" alt="An INdigo Bunting">
+            </a>
+
+          </div>
+
+            <section class="animal-info" id="loblolly-animal1">
+
+              <div class="photo" id="loblolly-animal1-photo">
+                <img src="images/loblolly/loblolly-lichen.jpg" alt="Lichen growing on tree">
+              </div>
+
+              <div class="text" id="loblolly-animal1-text">
+                <h2> Christmas Lichen </h2>
+                <p> Christmas Lichen (Cryptothecia rubrocincta) can be spotted on the sides of trees exposed to lots of natural sunlight. Deriving its name from its resemblance to a Christmas wreath in  coloration and shape, the lichen is a symbiotic organism consisting of a fungi and alga. The fungi provides a moist environment for the algae to live and in turn the algae provide nutrients for the fungi. The Christmas Lichen has even been used to create a red dye in Brazil. For more information, please visit <a href="https://lucec.loyno.edu/natural-history-writings/christmas-wreath-lichen-cryptothecia-rubrocincta">Loyola University’s Nature Notes.</a></p>
+                <p> Photo taken by Trey Ecker. </p>
+                <button id="loblolly-button1"> close </button>
+              </div>
+            </section>
+
+            <section class="animal-info" id="loblolly-animal2">
+
+              <div class="photo" id="loblolly-animal2-photo">
+                <img src="images/loblolly/loblolly-banana-spider.jpg" alt="A Golden Orb Weaver grabs a leaf">
+              </div>
+
+              <div class="text" id="loblolly-animal2-text">
+                <h2> Golden Orb Weaver </h2>
+                <p> The Golden Silk Spider (Trichonephila clavipes) is common among southeastern states. Also known as a Golden Orb-Weaver or Banana Spider, the Golden Silk Spider is one of the largest non-tarantula-like spiders in North America. Known for their intricate web designs, mature females reach up to 5 inches and can be spotted in August and late into the fall. In late fall they create at least two large egg sacs, approximately 3cm in diameter, consisting of hundreds of eggs. Though the spiders are relatively harmless, they are known to bite when pinched or held. Overall, the bite is generally rated as less severe than a bee sting. For more information, please visit <a href="https://entnemdept.ufl.edu/creatures/misc/golden_silk_spider.htm">the University of Florida’s entymology department.</a> </p>
+                <p> <a href="https://commons.wikimedia.org/wiki/File:Golden_silk_orb-weaver_spider_Nephila_clavipes_female.jpg">Thumbnail photo</a> sourced from Charles J. Sharp, <a href ="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0,</a> via Wikimedia Commons. Second Photo taken by Trey Ecker.</p>
+                <button id="loblolly-button2"> close </button>
+              </div>
+            </section>
+
+            <section class="animal-info" id="loblolly-animal3">
+
+              <div class="photo" id="loblolly-animal3-photo">
+                <img src="images/loblolly/loblolly-maple.jpg" alt="A Florida Maple Tree">
+              </div>
+
+              <div class="text" id="loblolly-animal3-text">
+                <h2> Florida Maple </h2>
+                <p> The Florida Maple (Acer floridanum) or Southern Sugar Maple are native to Florida and boast a yellow coloration during the changing of the leaves in fall. Though smaller in size and less vibrant than their northern relatives, the Sugar Maple, the Florida Maple is considered a medium sized tree, and can grow to 60 feet. The perennial tree can be spotted throughout coastal plain areas from Virginia to Florida and is resistant to wind and ice. For more information visit <a href="https://www.wildflower.org/plants/result.php?id_plant=ACFL">the Wildflower Center.</a> </p>
+                <p> Photo sourced from <a href ="https://www.flickr.com/photos/chapstickaddict/5076858388">chapstickaddict</a> via Flicker.com</p>
+                <button id="loblolly-button3"> close </button>
+              </div>
+            </section>
+
+            <section class="animal-info" id="loblolly-animal4">
+
+              <div class="photo" id="loblolly-animal4-photo">
+                <img src="images/loblolly/loblolly-bunting.jpg" alt="An Indigo Bunting">
+              </div>
+
+              <div class="text" id="loblolly-animal4-text">
+                <h2> Indigo Bunting </h2>
+                <p> Though it is considered one of the most common songbirds in parts of the East, the Indigo Bunting (Passerina cyanea) is considered uncommon within North Central Florida. With that being said, they can still be seen within the parks of Gainesville and male bunting are distinctly identifiable due to their bright blue coloration and their rapid, excited warble. Females, on the other hand, are much harder to spot due to their brown coloration. The bunting prefers brush and can be found foraging on the ground and in low shrubs and trees. The species forage solitarily in the summer, and in flocks during the winter. For more information, please visit <a href="https://www.audubon.org/field-guide/bird/indigo-bunting">the Audubon Field Guide.</a></p>
+                <p> <a href="https://commons.wikimedia.org/wiki/File:Indigo_Bunting,_male.jpg">Photo</a> sourced from Dawn Scranton, <a href ="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> via Wikimedia Commons.</p>
+                <button id="loblolly-button4"> close </button>
+              </div>
+            </section>
+
+            <h2> Discover the Trails </h2>
+
+            <div class="map" id="loblolly-map"></div>
+
+            <a href="#buttons">
+              <button class="clicker" id="loblolly-close">Explore the other parks! </button>
+            </a>
+
+        </section>
+
+        <section id="paynes">
+          <section class="information" id="paynes-info">
+
+            <div class="photo" id="paynes-park-photo">
+              <img src="images/paynes/paynes-trail.jpg" alt="Bolen Bluff Trail">
+            </div>
+
+            <div class="text" id="paynes-text">
+              <h2> Paynes Praire: Bolen Bluff </h2>
+              <p> The Bolen Bluff trail at Paynes Prairie is open from 8 a.m. to dusk, year round. Admission is a suggested $2 donation. Located on the outskirts of Gainesville en route to Micanopy, Paynes Prairie offers some of the best trails and wildlife spotting. Bolen Bluff includes a 2.7 mile hike through the actual bluff of the park. A dike that opens when the prairie isn’t flooded allows guests to walk out into the savanna, but it will be closed on days deemed too wet by park officials.  On dry days, it is possible to descend into the prairie, but proceed with caution due to snakes and alligators that inhabit the wetland. In addition to reptiles, guests can view countless birds and even wild bison and horses. Offering enough trails and sightseeing to last hours, guests can spend a whole day wandering Paynes Prairie. For more information, please visit <a href="https://floridahikes.com/bolens-bluff-trail">Florida Hikes.</a> </p>
+              <p> Photo taken by Trey Ecker. Click on the images below to learn more. </p>
+            </div>
+
+          </section>
+
+          <div class="animal-photos" id="paynes-animal-photos">
+
+            <a href="#paynes-animal1">
+            <img class="animal-clicker" id="paynes-photo1" src="images/paynes/paynes-bison.jpg" alt="A wild bison in Paynes Prairie">
+            </a>
+
+            <a href="#paynes-animal2">
+            <img class="animal-clicker" id="paynes-photo2" src="images/paynes/paynes-woodpecker.jpg" alt="Red-bellied woodpecker">
+            </a>
+
+            <a href="#paynes-animal3">
+            <img class="animal-clicker" id="paynes-photo3" src="images/paynes/paynes-horses2.jpg" alt="Group of wild cracker horses in Paynes Prairie">
+            </a>
+
+            <a href="#paynes-animal4">
+            <img class="animal-clicker" id="paynes-photo4" src="images/paynes/paynes-hawk.jpg" alt="red shouldered hawk">
+            </a>
+
+          </div>
+
+            <section class="animal-info" id="paynes-animal1">
+
+              <div class="photo" id="paynes-animal1-photo">
+                <img src="images/paynes/paynes-bison.jpg" alt="A wild bison in Paynes Prairie">
+              </div>
+
+              <div class="text" id="paynes-animal1-text">
+                <h2> Bison </h2>
+                <p> The bison (Bison bison) are native to the grasslands of North America and were an integral part of both the continent and the indigenous peoples across it. Once reaching a point of extinction, concerted efforts have been made to restore the bison population across the country, with the Department of the Interior supporting 17 different herds across 12 different states. Standing at 6 ft for males (bulls) and 4-5 ft for females (cows) and weighing anywhere from 1,000 to 2,000 lbs, bison are not only big, but also quite agile. They can reach top speeds of 35 mph, and can swim, jump over fences and spin quickly. If witnessing a bison at Paynes Prairie, observe from a distance out of safety. Also, check the tail. If a bison’s tail is standing straight up, it’s a sign they feel threatened. For more information, please visit <a href="https://www.doi.gov/blog/15-facts-about-our-national-mammal-american-bison"> the Department of the Interior.</a></p>
+                <p> <a href="https://commons.wikimedia.org/wiki/File:Flickr_-_ggallice_-_Bison.jpg">Photo</a> sourced from Geoff Gallice from Gainesville, FL, USA, <a href ="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> via Wikimedia Commons.</p>
+                <button id="paynes-button1"> close </button>
+              </div>
+            </section>
+
+            <section class="animal-info" id="paynes-animal2">
+
+              <div class="photo" id="paynes-animal2-photo">
+                <img src="images/paynes/paynes-woodpecker.jpg" alt="red-bellied woodpecker">
+              </div>
+
+              <div class="text" id="paynes-animal2-text">
+                <h2> Red-Bellied Woodpecker </h2>
+                <p> The red-bellied woodpecker (Melanerpes carolinus) is native to the southeast of North America and resides primarily in deciduous forests and wetlands. Identifiable by the bright-red cap on their heads more so than the small red area on their bellies, woodpeckers are visible throughout many parks in Florida. Though the red-bellied woodpecker is primarily a bird of the swamps of the southeast, it has been adapting it’s life to urban environments and has been expanding its range further north. For more information, please visit <a href="https://www.audubon.org/field-guide/bird/red-bellied-woodpecker">the Audubon Field Guide.</a></p>
+                <p> Photo sourced from <a href ="https://www.flickr.com/photos/dfc_pcola/27080125517">Dennis Church</a> via Flicker.com</p>
+                <button id="paynes-button2"> close </button>
+              </div>
+            </section>
+
+            <section class="animal-info" id="paynes-animal3">
+
+              <div class="photo" id="paynes-animal3-photo">
+                <img src="images/paynes/paynes-horses2.jpg" alt="Wild cracker horse in Paynes Prairie">
+              </div>
+
+              <div class="text" id="paynes-animal3-text">
+                <h2> Cracker Horses </h2>
+                <p> The cracker horses of Paynes Prairie are particularly special due to their descendancy from the horses of Spanish conquistadors introduced to the peninsula back in the 1500s and 1600s. Originally used as ranch horses, the Cracker horses were regarded for their superior quality and personality over other breeds, as they had been selectively bred by the Spanish. Eventually, so many other breeders  wanted Cracker horses that the breed  began to fade. During the 1970s, the Florida Department of Agriculture and Consumer Sciences worked closely alongside various Florida farming families to protect the integrity of the remaining Cracker horses and cattle lineage. Paynes Prairie served as a home for established herds. The cracker horses of Paynes Prairie are not only distinctly Floridian and considered their own breed, but they are a piece of Florida’s living history. For more information, please visit <a href="https://www.fdacs.gov/Agriculture-Industry/Horses-Equine/Cracker-Cattle-and-Cracker-Horse-Program">the Florida Department of Agriculture.</a> </p>
+                <p> Photo sourced from <a href ="https://www.flickr.com/photos/1stpix_diecast_dioramas/37761615186">Phil's 1stPix</a> via Flicker.com</p>
+                <button id="paynes-button3"> close </button>
+              </div>
+            </section>
+
+            <section class="animal-info" id="paynes-animal4">
+
+              <div class="photo" id="paynes-animal4-photo">
+                <img src="images/paynes/paynes-hawk.jpg" alt="Red-shouldered Hawk">
+              </div>
+
+              <div class="text" id="paynes-animal4-text">
+                <h2> Red Shouldered Hawk </h2>
+                <p>The Red-shouldered Hawk (Buteo lineatus) is common to the Southeastern region of North America, as well as the California coasts and Northwestern Mexico. The hawk can often be heard prior to being seen. Their typical call is akin to a shrill scream and is often mimicked by Blue Jays, perhaps to signal the presence of hawks in the area.  Frequently hunting from perches, the red-shouldered hawk often swoops down once it’s located its prey. However, they sometimes fly low in open areas, striking unexpecting prey mid-flight. Though hawks are often known for their impeccable sight, they also can hunt using hearing. For more information, please visit <a href="https://www.audubon.org/field-guide/bird/red-shouldered-hawk">the Audubon Field Guide.</a> </p>
+                <p> Photo sourced from <a href ="https://www.flickr.com/photos/52450054@N04/49174732838"> Judy Gallagher </a>via Flicker.com</p>
+                <button id="paynes-button4"> close </button>
+              </div>
+            </section>
+
+            <h2> Discover the Trails </h2>
+
+            <div class="map" id="paynes-map"></div>
+
+
+            <a href="#buttons">
+            <button class="clicker" id="paynes-close"> Explore the other parks! </button>
+            </a>
+
+        </section>
+
+      </div>
+
+    </article>
+
+    <footer>
+      <p>This page was created by Trey Ecker. All photos within the trail maps were taken by Trey Ecker. View my <a href="https://github.com/treyecker/gainesville-park-guide">GitHub Repo</a>.</p>
+    </footer>
+
+
+    <script src="js/places.js"></script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
