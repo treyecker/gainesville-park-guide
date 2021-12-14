@@ -57,18 +57,6 @@ article {
   max-width: 900px;
 }
 
-button {
-  padding:.75rem;
-  border:0.1rem solid #FFFFFF;
-  margin: 1rem;
-  border-radius:0.25rem;
-  color:#000000;
-  text-align:center;
-  text-transform: uppercase;
-  text-decoration: none;
-  font-weight: bold;
-}
-
 a.clicker {
   display: block;
   padding:.75rem;
@@ -85,6 +73,18 @@ a.clicker {
 
 a:hover.clicker {
   color: #000;
+}
+
+button {
+  padding:.75rem;
+  border:0.1rem solid #FFFFFF;
+  margin: 1rem;
+  border-radius:0.25rem;
+  color:#000000;
+  text-align:center;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: bold;
 }
 
 .map {
