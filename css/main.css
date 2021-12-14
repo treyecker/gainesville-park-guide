@@ -76,6 +76,7 @@ a:hover.clicker {
 }
 
 button {
+  display: block;
   padding:.75rem;
   border:0.1rem solid #FFFFFF;
   margin: 1rem;
