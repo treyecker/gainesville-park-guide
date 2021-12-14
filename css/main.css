@@ -76,10 +76,9 @@ a:hover.clicker {
 }
 
 button {
-  display: block;
   padding:.75rem;
   border:0.1rem solid #FFFFFF;
-  margin: 1rem;
+  margin: 1rem 0rem;
   border-radius:0.25rem;
   color:#000000;
   background: #efefef;
