@@ -60,7 +60,7 @@ article {
 button {
   padding:.75rem;
   border:0.1rem solid #FFFFFF;
-  margin: 1rem 1rem 1rem 0rem;
+  margin: 1rem;
   border-radius:0.25rem;
   color:#000000;
   text-align:center;
@@ -69,10 +69,28 @@ button {
   font-weight: bold;
 }
 
+a.clicker {
+  display: block;
+  padding:.75rem;
+  border:0.1rem solid #FFFFFF;
+  margin: 1rem;
+  border-radius:0.25rem;
+  color:#000000;
+  background: #efefef;
+  text-align:center;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a:hover.clicker {
+  color: #000;
+}
+
 .map {
   height: 500px;
   width: 100%;
-  margin: 1rem 0rem 0rem;
+  margin: 1rem 0rem;
 }
 
 #quiz-content {
@@ -147,6 +165,7 @@ form {
 }
 
 footer {
+  margin: 1rem 0rem 0rem;
   padding: 1rem 0rem;
   text-align: center;
   background: #000;
